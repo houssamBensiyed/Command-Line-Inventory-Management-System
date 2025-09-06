@@ -87,3 +87,26 @@ int main() {
 
     return 0;
 }
+
+
+void display_menu(void) {
+    printf("\n-----------------------\n");
+    printf("1. Add New Item\n");
+    printf("2. Display All Items\n");
+    printf("3. Search for Item by Name\n");
+    printf("4. Exit\n");
+    printf("-------------------------\n");
+}
+
+void add_item(Item* inventory, int* count) {
+    if (*count >= MAX_INVENTORY_SIZE) {
+        printf("Inventory is full. Cannot add more items.\n");
+        return;
+    }
+
+    Item new_item;
+
+    printf("Enter item name: ");
+    fgets(new_item.name, sizeof(new_item.name), stdin);
+    new_item.name[strcspn(new_item.name, "\n")] = 0;
+}
