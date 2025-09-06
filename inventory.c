@@ -27,3 +27,16 @@ typedef struct InventoryItem {
 
 } Item;
 
+void display_menu(void);
+
+void add_item(Item* inventory, int* count);
+
+void display_single_item(const Item* item);
+
+Item* find_item_by_name(const Item* inventory, int count, const char* name);
+
+const char* get_category_string(ItemCategory category);
+
+void clear_input_buffer(void);
+
+
