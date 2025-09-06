@@ -33,6 +33,8 @@ void add_item(Item* inventory, int* count);
 
 void display_single_item(const Item* item);
 
+void display_inventory(const Item* inventory, int count);
+
 Item* find_item_by_name(const Item* inventory, int count, const char* name);
 
 const char* get_category_string(ItemCategory category);
