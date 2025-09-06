@@ -41,4 +41,49 @@ const char* get_category_string(ItemCategory category);
 
 void clear_input_buffer(void);
 
+int main() {
+    Item inventory[MAX_INVENTORY_SIZE];
+    int current_item_count = 0;
+    int choice = 0;
 
+    printf("Welcome to the Inventory Management System! \n");
+
+    do {
+        display_menu();
+        printf("\nEnter you choice: ");
+        scanf("%d", &choice);
+        clear_input_buffer();
+
+        switch (choice) {
+            case 1:
+                add_item(inventory, &current_item_count);
+                break;
+            case 2:
+                display_inventory(inventory, current_item_count);
+                break;
+            case 3: {
+                char search_name[100];
+                printf("Enter the name of the item to search for: ");
+                fgets(search_name, sizeof(search_name), stdin);
+                search_name[strcspn(search_name, "\n")] = 0;
+
+                Item* found_item = find_item_by_name(inventory, current_item_count, search_name);
+
+                if (found_item != NULL) {
+                    printf("\n----- Item Found ------\n");
+                    display_single_item(found_item);
+                } else {
+                    printf("Item '%s' not found in inventory.\n", search_name);
+                }
+                break;
+            }
+            case 4:
+                printf("Exiting program. Goodbye!\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 4);
+
+    return 0;
+}
